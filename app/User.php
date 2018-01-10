@@ -54,8 +54,4 @@ class User extends Model implements
     {
         return [];
     }
-
-    public function getPermissions($user_id) {
-        return DB::select("SELECT `dashboard`,`certidao`, `procuracao`, `testamento`, `usuarios`, `usuarios_add`, `usuarios_editar`, `usuarios_remover`, `relatorios`, `agenda_testamento` FROM `permissao` WHERE user_id = :user_id", ['user_id' => $user_id])[0];
-    }
 }

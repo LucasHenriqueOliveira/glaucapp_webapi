@@ -164,21 +164,9 @@ class AuthController extends Controller
     {
 
         $data = JWTAuth::parseToken()->authenticate();
-        $user = JWTAuth::parseToken()->toUser();
 
 		$usuario = new \App\Data\Usuario();
 		$usuario->logSession($data->id);
-
-		if(!$data->app) {
-			$permissao = $user->getPermissions($data->id);
-			$data->permissao = $permissao;
-		} else {
-			if($request->input('desk') && !$data->login_default) {
-				return new JsonResponse([
-					'error' => true
-				]);
-			}
-		}
 
         return new JsonResponse([
             'message' => 'authenticated_user',
