@@ -1,0 +1,54 @@
+<div class="col-md-3 left_col">
+    <div class="left_col scroll-view">
+        <div class="navbar nav_title" style="border: 0;">
+            <!--<a href="#/dashboard" class="site_title">-->
+                <!--<img src="images/logo2.svg" width="60px">-->
+                <!--<img src="images/logo3.svg" width="110px">-->
+            <!--</a>-->
+            <a href="#/dashboard" class="site_title"><img src="../images/logo.svg" width="40px"> <span>Cartório App</span></a>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <!-- menu profile quick info -->
+        <div class="profile clearfix">
+            <div class="profile_pic">
+                <img src="/images/user.svg" class="img-circle profile_img">
+            </div>
+            <div class="profile_info">
+                <span>Bem-vindo,</span>
+                <h2>{{user.nome}}</h2>
+            </div>
+        </div>
+        <!-- /menu profile quick info -->
+
+        <br />
+
+        <!-- sidebar menu -->
+        <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+            <div class="menu_section">
+                <h3>Menu</h3>
+                <ul class="nav side-menu">
+                    <li ng-class="{'current-page': page=='dashboard'}"><a href="#/dashboard"><i class="fa fa-home"></i> Página Inicial </a></li>
+                </ul>
+                <ul class="nav side-menu" ng-if="user.permissao.certidao">
+                    <li ng-class="{'current-page': page=='certidao' || page=='detalhes-certidao'}"><a href="#/certidao"><i class="fa fa-file-text-o"></i> Certidão e Traslados </a></li>
+                </ul>
+                <ul class="nav side-menu" ng-if="user.permissao.procuracao">
+                    <li ng-class="{'current-page': page=='procuracao' || page=='detalhes-procuracao'}"><a href="#/procuracao"><i class="fa fa-paste"></i> Procuração </a></li>
+                </ul>
+                <ul class="nav side-menu" ng-if="user.permissao.testamento">
+                    <li ng-class="{'current-page': page=='testamento' || page=='detalhes-testamento'}"><a href="#/testamento"><i class="fa fa-files-o"></i> Testamento </a></li>
+                </ul>
+                <ul class="nav side-menu" ng-if="user.permissao.usuarios">
+                    <li ng-class="{'current-page': page=='usuarios' || page=='usuario'}"><a href="#/usuarios"><i class="fa fa-users"></i> Usuários </a></li>
+                </ul>
+                <!--<ul class="nav side-menu" ng-if="user.permissao.relatorios">-->
+                    <!--<li ng-class="{'current-page': page=='relatorios'}"><a href="#/relatorios"><i class="fa fa-line-chart"></i> Relatórios </a></li>-->
+                <!--</ul>-->
+
+            </div>
+        </div>
+        <!-- /sidebar menu -->
+    </div>
+</div>

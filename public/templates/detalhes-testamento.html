@@ -1,0 +1,119 @@
+<ng-include src="'templates/sidebar.html'"></ng-include>
+<ng-include src="'templates/header.html'"></ng-include>
+
+<div id="loaderDiv" loader>
+    <div class="ajax-loader">
+        Carregando
+        <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+    </div>
+</div>
+
+<!-- page content -->
+<div class="right_col" role="main">
+    <!-- top tiles -->
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 5px;">
+            <div class="pull-left">
+                <span style="font-size: 12px;"><a href="#/dashboard"><i class="fa fa-home"></i> Página Inicial</a> > <a href="#/testamento">Testamento</a> > Detalhes</span>
+            </div>
+        </div>
+    </div>
+    <div class="row top_tiles">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Detalhes</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <label class="label-bold">Nome:</label> {{testamento.nome}}
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <label class="label-bold">Email:</label> {{testamento.email}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <label class="label-bold">CPF:</label> {{testamento.cpf | brCpf}}
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <label class="label-bold">Telefone:</label> {{testamento.telefone | brPhoneNumber}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <label class="label-bold">Data/Hora:</label> {{testamento.data}}
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <label class="label-bold">Agendamento:</label> {{testamento.agendamento}}
+                        </div>
+                    </div>
+                </div>
+                <div class="x_title">
+                    <h2 style="margin-top: 15px;">Movimentações</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <table class="table table-striped display">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Descrição</th>
+                            <th>Usuário</th>
+                            <th>Data/Hora</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="movimentacao in testamento.movimentacoes">
+                            <td>{{movimentacao.sequencia}}</td>
+                            <td>{{movimentacao.descricao}}</td>
+                            <td><span ng-if="!movimentacao.nome"> - </span>{{movimentacao.nome}}</td>
+                            <td>{{movimentacao.data}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="x_content text-center" ng-if="hasAddMovimentacao">
+                    <div class="divider-dashed"></div>
+                    <div class="form-group" style="margin-top: 30px;">
+                        <label class="col-sm-3 control-label" style="margin-top: 7px;">
+                            Deseja incluir uma movimentação?
+                        </label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <input type="text" ng-model="descricao" class="form-control">
+                            <span class="input-group-btn">
+                               <button type="button" class="btn btn-primary" ng-click="addDescricao(descricao, alerta)">Incluir!</button>
+                            </span>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" ng-model="alerta" ng-true-value="1" ng-false-value="0"> Deseja informar o usuário sobre a movimentação?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="x_content text-center" style="border-top: 1px solid #e5e5e5;">
+                    <button ng-click="movimentar()" type="button" class="btn btn-primary" style="margin-top: 15px;">
+                        <i class="fa fa-plus"></i> Movimentar
+                    </button>
+                    <button type="button" ng-click="addDescricao(testamento.proximo_passo)" ng-if="testamento.proximo_passo" class="btn btn-success" style="margin-top: 15px;">
+                        {{testamento.proximo_passo}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /page content -->
+
+<ng-include src="'templates/footer.html'"></ng-include>

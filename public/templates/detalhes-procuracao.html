@@ -1,0 +1,273 @@
+<ng-include src="'templates/sidebar.html'"></ng-include>
+<ng-include src="'templates/header.html'"></ng-include>
+
+<div id="loaderDiv" loader>
+    <div class="ajax-loader">
+        Carregando
+        <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+    </div>
+</div>
+
+<!-- page content -->
+<div class="right_col" role="main">
+    <!-- top tiles -->
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 5px;">
+            <div class="pull-left">
+                <span style="font-size: 12px;"><a href="#/dashboard"><i class="fa fa-home"></i> Página Inicial</a> > <a href="#/procuracao">Procuração</a> > Detalhes</span>
+            </div>
+        </div>
+    </div>
+    <div class="row top_tiles">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Detalhes</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <label class="label-bold">Tipo:</label> {{procuracao.nome_procuracao}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <label class="label-bold">Nome:</label> {{procuracao.nome}}
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <label class="label-bold">Email:</label> {{procuracao.email}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-12" ng-if="procuracao.rg_outorgante">
+                            <label class="label-bold">RG Outorgante:</label>
+                            <a ng-click="getDocumento('rg_outorgante')">
+                                <span class="label label-default label-documento"><span class="glyphicon glyphicon-save"></span> RG</span>
+                            </a>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12" ng-if="procuracao.cpf_outorgante">
+                            <label class="label-bold">CPF Outorgante:</label>
+                            <a ng-click="getDocumento('cpf_outorgante')">
+                                <span class="label label-default label-documento"><span class="glyphicon glyphicon-save"></span> CPF</span>
+                            </a>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12" ng-if="procuracao.rg_outorgado">
+                            <label class="label-bold">RG Outorgado:</label>
+                            <a ng-click="getDocumento('rg_outorgado')">
+                                <span class="label label-default label-documento"><span class="glyphicon glyphicon-save"></span> RG</span>
+                            </a>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12" ng-if="procuracao.cpf_outorgado">
+                            <label class="label-bold">CPF Outorgado:</label>
+                            <a ng-click="getDocumento('cpf_outorgado')">
+                                <span class="label label-default label-documento"><span class="glyphicon glyphicon-save"></span> CPF</span>
+                            </a>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12" ng-if="procuracao.certidao_nascimento">
+                            <label class="label-bold">Certidão de Nascimento:</label>
+                            <a ng-click="getDocumento('certidao_nascimento')">
+                                <span class="label label-default label-documento"><span class="glyphicon glyphicon-save"></span> Nascimento</span>
+                            </a>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12" ng-if="procuracao.certidao_obito">
+                            <label class="label-bold">Certidão de Óbito:</label>
+                            <a ng-click="getDocumento('certidao_obito')">
+                                <span class="label label-default label-documento"><span class="glyphicon glyphicon-save"></span> Óbito</span>
+                            </a>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12" ng-if="procuracao.matricula_imovel">
+                            <label class="label-bold">Matrícula do Imóvel:</label>
+                            <a ng-click="getDocumento('matricula_imovel')">
+                                <span class="label label-default label-documento"><span class="glyphicon glyphicon-save"></span> Imóvel</span>
+                            </a>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12" ng-if="procuracao.extrato_consorcio">
+                            <label class="label-bold">Extrato do Consórcio:</label>
+                            <a ng-click="getDocumento('extrato_consorcio')">
+                                <span class="label label-default label-documento"><span class="glyphicon glyphicon-save"></span> Consórcio</span>
+                            </a>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12" ng-if="procuracao.dut_veiculo">
+                            <label class="label-bold">DUT do Veículo:</label>
+                            <a ng-click="getDocumento('dut_veiculo')">
+                                <span class="label label-default label-documento"><span class="glyphicon glyphicon-save"></span> Veículo</span>
+                            </a>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12" ng-if="procuracao.procuracao">
+                            <label class="label-bold">Procuração:</label>
+                            <a ng-click="getDocumento('procuracao')">
+                                <span class="label label-default label-documento"><span class="glyphicon glyphicon-save"></span> Procuração</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <label class="label-bold">Telefone:</label> {{procuracao.telefone | brPhoneNumber}}
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <label class="label-bold">Data/Hora:</label> {{procuracao.data}}
+                        </div>
+                    </div>
+                </div>
+                <div class="x_title">
+                    <h2>Partes</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div ng-repeat="parte in procuracao.partes">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <label class="label-bold">Tipo:</label> {{parte.tipo}}
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <label class="label-bold">Nome:</label> {{parte.nome}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-xs-12" ng-if="parte.rg_outorgante_frente">
+                                <label class="label-bold">RG Outorgante Frente:</label>
+                                <a ng-click="getDocumento('rg_outorgante_frente', parte.parte_id)">
+                                    <span class="label label-default label-documento"><span class="glyphicon glyphicon-save"></span> RG Frente</span>
+                                </a>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12" ng-if="parte.rg_outorgante_verso">
+                                <label class="label-bold">RG Outorgante Verso:</label>
+                                <a ng-click="getDocumento('rg_outorgante_verso', parte.parte_id)">
+                                    <span class="label label-default label-documento"><span class="glyphicon glyphicon-save"></span> RG Verso</span>
+                                </a>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12" ng-if="parte.cpf_outorgante">
+                                <label class="label-bold">CPF Outorgante:</label>
+                                <a ng-click="getDocumento('cpf_outorgante', parte.parte_id)">
+                                    <span class="label label-default label-documento"><span class="glyphicon glyphicon-save"></span> CPF</span>
+                                </a>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12" ng-if="parte.rg_outorgado_frente">
+                                <label class="label-bold">RG Outorgado:</label>
+                                <a ng-click="getDocumento('rg_outorgado_frente', parte.parte_id)">
+                                    <span class="label label-default label-documento"><span class="glyphicon glyphicon-save"></span> RG Frente</span>
+                                </a>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12" ng-if="parte.rg_outorgado_verso">
+                                <label class="label-bold">RG Outorgado:</label>
+                                <a ng-click="getDocumento('rg_outorgado_verso', parte.parte_id)">
+                                    <span class="label label-default label-documento"><span class="glyphicon glyphicon-save"></span> RG Verso</span>
+                                </a>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12" ng-if="parte.cpf_outorgado">
+                                <label class="label-bold">CPF Outorgado:</label>
+                                <a ng-click="getDocumento('cpf_outorgado', parte.parte_id)">
+                                    <span class="label label-default label-documento"><span class="glyphicon glyphicon-save"></span> CPF</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <label class="label-bold">Estado Civil:</label> {{parte.estado_civil}}
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <label class="label-bold">Nacionalidade:</label> {{parte.nacionalidade}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <label class="label-bold">Profissão:</label> {{parte.profissao}}
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <label class="label-bold">CEP:</label> {{parte.cep}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <label class="label-bold">Logradouro:</label> {{parte.logradouro}}
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <label class="label-bold">Número:</label> {{parte.numero}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <label class="label-bold">Complemento:</label> {{parte.complemento}}
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <label class="label-bold">Bairro:</label> {{parte.bairro}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <label class="label-bold">Cidade:</label> {{parte.cidade}}
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <label class="label-bold">Estado:</label> {{parte.estado}}
+                            </div>
+                        </div>
+                        <hr />
+                    </div>
+                </div>
+                <div class="x_title">
+                    <h2 style="margin-top: 15px;">Movimentações</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <table class="table table-striped display">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Descrição</th>
+                            <th>Usuário</th>
+                            <th>Data/Hora</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="movimentacao in procuracao.movimentacoes">
+                            <td>{{movimentacao.sequencia}}</td>
+                            <td>{{movimentacao.descricao}}</td>
+                            <td><span ng-if="!movimentacao.nome"> - </span>{{movimentacao.nome}}</td>
+                            <td>{{movimentacao.data}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="x_content text-center" ng-if="hasAddMovimentacao">
+                    <div class="divider-dashed"></div>
+                    <div class="form-group" style="margin-top: 30px;">
+                        <label class="col-sm-3 control-label" style="margin-top: 7px;">
+                            Deseja incluir uma movimentação?
+                        </label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <input type="text" ng-model="descricao" class="form-control">
+                            <span class="input-group-btn">
+                               <button type="button" class="btn btn-primary" ng-click="addDescricao(descricao, alerta)">Incluir!</button>
+                            </span>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" ng-model="alerta" ng-true-value="1" ng-false-value="0"> Deseja informar o usuário sobre a movimentação?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="x_content text-center" style="border-top: 1px solid #e5e5e5;">
+                    <button ng-click="movimentar()" type="button" class="btn btn-primary" style="margin-top: 15px;">
+                        <i class="fa fa-plus"></i> Movimentar
+                    </button>
+                    <button type="button" ng-click="addDescricao(procuracao.proximo_passo)" ng-if="procuracao.proximo_passo" class="btn btn-success" style="margin-top: 15px;">
+                        {{procuracao.proximo_passo}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /page content -->
+
+<ng-include src="'templates/footer.html'"></ng-include>
