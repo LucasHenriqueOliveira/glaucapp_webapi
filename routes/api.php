@@ -18,115 +18,6 @@ $api = $app->make(Dingo\Api\Routing\Router::class);
 
 $api->version('v1', function ($api) {
 
-    // certidoes
-    $api->get('/certidoes', [
-        'uses' => 'App\Http\Controllers\CertidaoController@getCertidoes',
-        'as' => 'api.certidoes'
-    ]);
-
-    // certidao
-    $api->get('/certidao', [
-        'uses' => 'App\Http\Controllers\CertidaoController@getCertidao',
-        'as' => 'api.certidao'
-    ]);
-
-    $api->post('/certidao', [
-        'uses' => 'App\Http\Controllers\CertidaoController@addCertidao',
-        'as' => 'api.certidao'
-    ]);
-
-    $api->delete('/certidao', [
-        'uses' => 'App\Http\Controllers\CertidaoController@removeCertidao',
-        'as' => 'api.certidao'
-    ]);
-
-    // procuracoes
-    $api->get('/procuracoes', [
-        'uses' => 'App\Http\Controllers\ProcuracaoController@getProcuracoes',
-        'as' => 'api.procuracoes'
-    ]);
-
-    // procuracao
-    $api->get('/procuracao', [
-        'uses' => 'App\Http\Controllers\ProcuracaoController@getProcuracao',
-        'as' => 'api.procuracao'
-    ]);
-
-    $api->post('/procuracao', [
-        'uses' => 'App\Http\Controllers\ProcuracaoController@addProcuracao',
-        'as' => 'api.procuracao'
-    ]);
-
-    $api->delete('/procuracao', [
-        'uses' => 'App\Http\Controllers\ProcuracaoController@removeProcuracao',
-        'as' => 'api.procuracao'
-    ]);
-
-	$api->get('/procuracao/documento', [
-		'uses' => 'App\Http\Controllers\ProcuracaoController@getDocumento',
-		'as' => 'api.documento.procuracao'
-	]);
-
-	$api->get('/procuracao/tipos', [
-		'uses' => 'App\Http\Controllers\ProcuracaoController@getTiposProcuracao',
-		'as' => 'api.tipos.procuracao'
-	]);
-
-	$api->get('/procuracao/tipos/documentos', [
-		'uses' => 'App\Http\Controllers\ProcuracaoController@getDocumentosProcuracao',
-		'as' => 'api.documentos.procuracao'
-	]);
-
-    // testamentos
-    $api->get('/testamentos', [
-        'uses' => 'App\Http\Controllers\TestamentoController@getTestamentos',
-        'as' => 'api.testamentos'
-    ]);
-
-    // testamento
-    $api->get('/testamento', [
-        'uses' => 'App\Http\Controllers\TestamentoController@getTestamento',
-        'as' => 'api.testamento'
-    ]);
-
-    $api->post('/testamento', [
-        'uses' => 'App\Http\Controllers\TestamentoController@addTestamento',
-        'as' => 'api.testamento'
-    ]);
-
-    $api->delete('/testamento', [
-        'uses' => 'App\Http\Controllers\TestamentoController@removeTestamento',
-        'as' => 'api.testamento'
-    ]);
-
-	$api->get('/testamento/datas', [
-		'uses' => 'App\Http\Controllers\TestamentoController@getDatasTestamento',
-		'as' => 'api.datas.testamento'
-	]);
-
-	$api->post('/testamento/bloquear-agenda', [
-		'uses' => 'App\Http\Controllers\TestamentoController@setBloquearAgenda',
-		'as' => 'api.agenda.testamento'
-	]);
-
-    // movimentar
-    $api->post('/movimentar', [
-        'uses' => 'App\Http\Controllers\Controller@movimentar',
-        'as' => 'api.movimentar'
-    ]);
-
-	// histórico
-	$api->get('/historico', [
-		'uses' => 'App\Http\Controllers\Controller@historico',
-		'as' => 'api.historico'
-	]);
-
-    // firma
-    $api->get('/firma', [
-        'uses' => 'App\Http\Controllers\Controller@getFirma',
-        'as' => 'api.firma'
-    ]);
-
     // usuarios
     $api->get('/usuarios', [
         'uses' => 'App\Http\Controllers\UsuarioController@getUsuarios',
@@ -179,18 +70,7 @@ $api->version('v1', function ($api) {
         'uses' => 'App\Http\Controllers\UsuarioController@changePassword',
         'as' => 'api.usuario.troca.senha'
     ]);
-
-
-    $api->get('/estados', [
-        'uses' => 'App\Http\Controllers\EstadoCidadeController@estados',
-        'as' => 'api.estados'
-    ]);
-
-    $api->get('/cidades', [
-        'uses' => 'App\Http\Controllers\EstadoCidadeController@cidades',
-        'as' => 'api.cidades'
-    ]);
-
+	
     // dashboard
     $api->get('/dashboard', [
         'uses' => 'App\Http\Controllers\Controller@dashboard',

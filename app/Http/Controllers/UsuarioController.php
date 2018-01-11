@@ -51,7 +51,7 @@ class UsuarioController extends BaseController{
 	public function addUsuarioApp(Request $request) {
 		$usuario = new \App\Data\Usuario();
 
-		$res = $usuario->addUsuarioApp($request->input('nome'),$request->input('email'), $request->input('cpf'),
+		$res = $usuario->addUsuarioApp($request->input('nome'),$request->input('email'), $request->input('perfil'),
 			$request->input('telefone'), Hash::make(stripslashes($request->input('password'))),
 			str_random(10), date('Y-m-d H:i:s'));
 

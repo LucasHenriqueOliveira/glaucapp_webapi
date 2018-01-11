@@ -92,7 +92,7 @@ class Usuario extends Utils {
         }
     }
 
-	public function addUsuarioApp($nome, $email, $cpf, $telefone, $senha, $token, $date) {
+	public function addUsuarioApp($nome, $email, $perfil, $telefone, $senha, $token, $date) {
 
 		try {
 			$response = DB::select("SELECT * FROM `users` WHERE `email` = ?", [$email]);
@@ -103,8 +103,8 @@ class Usuario extends Utils {
 				return $res;
 			}
 
-			DB::insert('INSERT INTO `users` (`nome`, `email`, `telefone`, `cpf`, `password`, `remember_token`, `created_at`, `login_default`, `app`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
-				[$nome, $email, $telefone, $cpf, $senha, $token, $date, 0, 1]);
+			DB::insert('INSERT INTO `users` (`nome`, `email`, `telefone`, `perfil`, `password`, `remember_token`, `created_at`, `login_default`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+				[$nome, $email, $telefone, $perfil, $senha, $token, $date, 1]);
 
 		} catch (\Exception $e) {
 			$res['error'] = true;
@@ -174,11 +174,13 @@ class Usuario extends Utils {
     }
 
 	public function email($nome, $email) {
+		/*
 		$texto = '<br /> Prezado(a) ' . $nome . ',';
-		$texto .= '<br /><br />O seu cadastro no '.getenv("nome_cartorio").' - Cartório App foi realizado com sucesso!';
-		$texto .= '<br /><br /> Att, <br />Cartório App';
+		$texto .= '<br /><br />O seu cadastro no GlaucApp foi realizado com sucesso!';
+		$texto .= '<br /><br /> Att, <br />GlaucApp';
 		$texto .= '<br /><br /> <h5>Não responda a este email. Os emails enviados a este endereço não serão respondidos.</h5>';
 		$this->sendEmail($email, 'Cadastro de Usuário', $texto);
+		*/
 	}
 
 	public function checkUsuarioSocial($id, $email, $tipo) {

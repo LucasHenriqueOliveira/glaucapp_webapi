@@ -23,7 +23,7 @@ class CreateSchema extends Migration
               `data_nascimento` DATETIME DEFAULT NULL,
               `profissao` varchar(100) DEFAULT NULL,
               `estado_civil` ENUM('Solteiro', 'Casado', 'Viúvo', 'Separado', 'Divorciado') DEFAULT NULL,
-              `perfil` TINYINT(1) NULL DEFAULT 1,
+              `perfil` TINYINT(1) NULL DEFAULT 0,
               `telefone` varchar(20) DEFAULT NULL,
               `foto` varchar(100) DEFAULT NULL,
               `login_default` tinyint(1) NOT NULL DEFAULT '1',
