@@ -103,8 +103,13 @@ class Usuario extends Utils {
 				return $res;
 			}
 
+			$login_default = 1;
+			if($perfil) {
+				$login_default = 0;
+			}
+
 			DB::insert('INSERT INTO `users` (`nome`, `email`, `telefone`, `perfil`, `password`, `remember_token`, `created_at`, `login_default`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
-				[$nome, $email, $telefone, $perfil, $senha, $token, $date, 1]);
+				[$nome, $email, $telefone, $perfil, $senha, $token, $date, $login_default]);
 
 		} catch (\Exception $e) {
 			$res['error'] = true;
